@@ -18,26 +18,33 @@ section{
     padding: 28px 8%;
 }
 
-header{
-    width: 100%;
-    padding:  28px 8%;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(255, 203, 219, 0.8);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+section#intro-experimentos {
+    padding-top: 120px; /* ou o suficiente pra descolar do header fixo */
 }
 
 
-#navbar{
+header{
+    width: 100%;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 203, 219, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+#navbar {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between; /* ✅ Isso alinha logo à esquerda e menu à direita */
     padding: 0 8%;
-    position: relative;
 }
 
+
 #nav_logo{
-    font-size: clamp(20px, 5vw, 32px);
+    font-size: clamp(20px, 5vw, px);
     font-weight: 600;
     margin-right: auto;
     white-space: nowrap;
