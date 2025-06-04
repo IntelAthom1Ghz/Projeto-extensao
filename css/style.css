@@ -1,0 +1,359 @@
+* {
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+body{
+    background-color:#121212;
+    color: #e0e0e0;
+}
+
+section{
+    padding: 28px 8%;
+}
+
+header{
+    width: 100%;
+    padding:  28px 8%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 203, 219, 0.8);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+#navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+}
+
+#nav_logo{
+    font-size: clamp(20px, 5vw, 32px);
+    font-weight: 600;
+    margin-right: auto;
+    white-space: nowrap;
+    transition: font-size 0.3s ease, margin 0.3s ease;
+}
+
+#nav_list {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    list-style: none;
+    gap: 48px;
+}
+
+.nav_item a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #7FDBFF;
+}
+
+.nav_item.active a{
+    color: thistle;
+    border-bottom: 3px solid black;
+}
+
+.nav_item a:hover{
+    color: crimson;
+    transition: 0.3s all;
+}
+
+.nav_item.active a:hover{
+    color: blueviolet;
+}
+
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 91px);
+}
+
+#cta {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+#cta .title{
+    font-size: 2.5rem;
+    color: #e0e0e0;
+}
+
+#cta .title span{
+    color: #7FDBFF;
+}
+
+#cta .description {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#cta_btns {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+#cta_btns a{
+    text-decoration: none;
+    color: #1d1d1d;
+    border-radius: 20px;
+}
+
+#banner{
+    width: 42%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#banner img{
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+#banner img:hover{
+    transform: scale(1.2);
+}
+
+.social-media-buttons {
+    display: flex;
+    gap: 18px;
+}
+
+.social-media-buttons a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 48px;
+    font-size: 1.25rem;
+    border-radius: 19px ;
+    text-align: none;
+    color: #1d1d1d;
+    background-color: darkgray;
+    transition: background 0.3s ease;
+}
+
+.social-media-buttons a:hover{
+    background-color: pink;
+}
+
+.btn-default {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    color: darkgrey;
+    background-color:  #7FDBFF;
+    transition: background 0.3s ease, transform 0.3s ease;
+    border-radius: 15px;
+      
+    
+
+}
+
+.btn-default:hover{
+    background-color: #2ECC40;
+    transform: scale(1.1);
+}
+
+
+
+
+
+.experimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin: 24px;
+    margin-top: 5%;
+}
+
+
+.experimento-card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(127, 219, 255, 0.2);
+    transition: transform 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.experimento-card p {
+    margin-bottom: 16px; /* Espaço entre o parágrafo e o botão */
+}
+
+.experimento-card h3 {
+    margin-bottom: 8px; /* Pequeno espaço entre o título e o parágrafo */
+    color: #e0e0e0;
+}
+
+.experimento-card .btn-default {
+    align-self: flex-start; /* Faz o botão se ajustar ao conteúdo, e não esticar */
+    width: auto;
+    color: #1d1d1d  ;             /* Impede que ele cresça além do necessário */
+}
+
+.experimento-card:hover{
+    transform: scale(1.1);
+}
+
+
+/* agora vem a parte da após o grid dos experimentos */
+
+
+
+#equipe {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 60px 20px;
+}
+
+#equipe h2{
+    color: #1d1d1d;
+}
+
+.subdescricao{
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px ;
+}
+
+.equipe-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.membro{
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0,0.1);
+    padding: 20px;
+    max-width: 220px;
+    text-align: center;
+    transition: transform 0.3s ;
+}
+
+.membro p, h3{
+    color: #121212;
+}
+
+.membro:hover{
+    transform: translateY((-5px));
+}
+
+.membro img{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+
+}
+.membrio img:hover{
+    transform: scale(1.1);
+}
+
+
+
+#ia {
+    background-color: #fff6e9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#ia h2{
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.ia-box{
+    background: #fff;
+    border-left: 6px solid #ff914d;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    text-align: left;
+    border-radius: 8px;
+}
+.ia-box p{
+    color: #121212;
+}
+
+.ia-resposta{
+    border-left-color: #5cb85c;
+    background: #f0fff0;
+}
+
+.ia-descricao-final{
+    font-size: 1.1em;
+    color: #444;
+    margin-top: 30px;
+}
+
+#sobre-projeto p span{
+    color: #7FDBFF;
+}
+
+.site-footer {
+    background-color: #121212;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .footer-columns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-column h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column a {
+    font-size: 20px;
+    color:#7FDBFF;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column a:hover {
+    color: #FDF1F4;
+  }
+  
+  .footer-copy {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 10px;
+  }
