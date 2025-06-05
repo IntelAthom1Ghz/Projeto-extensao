@@ -514,7 +514,7 @@ header {
     top: 0;
     z-index: 1000;
     background-color: rgba(255, 203, 219, 0.2);
-}
+}   
     #home {
         flex-direction: column;
         padding-top: 100px;
