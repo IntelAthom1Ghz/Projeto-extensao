@@ -523,4 +523,18 @@ header {
     #banner {
         display: none !important;
     }
+    
+    #home {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+
+    section#intro-experimentos {
+        padding-top: 160px; /* Aumente o espaço aqui */
+    }
+
+    #banner {
+        display: none;
+    }
 }
+
