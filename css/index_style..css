@@ -1,5 +1,6 @@
-/* CSS REESTRUTURADO COM CORREÇÕES */
+/* CSS AJUSTADO E OTIMIZADO */
 
+/* ===== RESET GLOBAL ===== */
 * {
     font-family: Poppins, sans-serif;
     margin: 0;
@@ -48,6 +49,7 @@ header {
     font-size: clamp(20px, 5vw, 28px);
     font-weight: 600;
     white-space: nowrap;
+    text-align: left;
 }
 
 #nav_list {
@@ -156,6 +158,9 @@ header {
     align-items: center;
     justify-content: space-between;
     min-height: calc(100vh - 91px);
+    padding-top: 100px;
+    gap: 32px;
+    flex-wrap: wrap;
 }
 
 #cta {
@@ -164,6 +169,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    align-items: flex-start;
 }
 
 #cta .title {
@@ -443,23 +449,19 @@ header {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 0px 16px;
+        padding: 0 16px;
         height: auto;
     }
     #nav_logo {
-        display: block;
-        text-align: center;
         font-size: 1.1rem;
-        margin: 0 auto;
     }
     header {
-        display: block;
         padding: 16px;
         position: static;
         box-shadow: none;
     }
-    #banner{
-        display: none;
+    #banner {
+        display: none !important;
     }
 }
 
@@ -472,7 +474,6 @@ header {
         gap: 10px;
     }
     #nav_logo {
-        position: relative;
         margin: 0;
         font-size: clamp(20px, 4vw, 28px);
         white-space: nowrap;
@@ -487,10 +488,9 @@ header {
         justify-content: center;
         margin-top: 10px;
     }
-    #content{
+    #content {
         margin-top: 10%;
     }
-    
 }
 
 @media (max-width: 600px) {
@@ -501,26 +501,25 @@ header {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 0px 16px;
+        padding: 0 16px;
     }
     #nav_logo {
-        display: block;
-        text-align: left;
         font-size: 1.2rem;
-        margin: 0 auto;
     }
     header {
-        display: block;
-        padding: 15px 15%;
+        padding: 15px 5%;
         position: static;
         box-shadow: none;
     }
     #home {
         flex-direction: column;
-        padding-top: 80px;
+        padding-top: 100px;
+        text-align: center;
     }
-
-    #banner{
-        display: none;
+    #cta {
+        align-items: center;
+    }
+    #banner {
+        display: none !important;
     }
 }
