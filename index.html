@@ -14,6 +14,30 @@
     <title>Protótipo Extensão</title>
 </head>
 <body>
+
+     <input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle" class="menu-icon">
+  <i class="fa-solid fa-bars icon-bars"></i>
+  <i class="fa-solid fa-xmark icon-close"></i>
+</label>
+
+
+<nav id="sidebar">
+  <ul>
+    <li><a href="#home">Início</a></li>
+    <li><a href="experimentos.html">Experimentos</a></li>
+    <li><a href="#sobre-projeto">Sobre</a></li>
+    <li><a href="#footer">Contato</a></li>
+</ul>
+</nav>
+
+
+
+
+
+
+
+
 <header>
     <nav id ='navbar'>
         <i class="#" id="nav_logo">Projeto de Extensão - Física Interativa</i>
@@ -151,7 +175,16 @@
           </footer></div>
 </main>
 
-
+<script>
+        const links = document.querySelectorAll("#sidebar a");
+        const menuToggle = document.getElementById("menu-toggle");
+      
+        links.forEach(link => {
+          link.addEventListener("click", () => {
+            menuToggle.checked = false;
+          });
+        });
+      </script>
 </body>
 
 </html>

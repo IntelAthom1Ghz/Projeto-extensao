@@ -14,6 +14,21 @@
     <title>Experimentos</title>
 </head>
 <body>
+    <input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle" class="menu-icon">
+  <i class="fa-solid fa-bars icon-bars"></i>
+  <i class="fa-solid fa-xmark icon-close"></i>
+</label>
+
+
+<nav id="sidebar">
+  <ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="experimentos.html">Experimentos</a></li>
+    <li><a href="index.html#sobre-projeto">Sobre</a></li>
+    <li><a href="index.html#footer">Contato</a></li>
+</ul>
+</nav>
 <header>
     <nav id ='navbar'>
         <i class="#" id="nav_logo">Projeto de Extensão - Física Interativa</i>
@@ -41,9 +56,8 @@
         
         <p class="subdescricao"><span>Se divirta enquanto explora nosso</span> projeto!</p>
     </section>
-    <section class="mecanica">
+   
         
-    <h1>Experimentos de Mecânica</h1>
 <div class="busca-container">
     <input type="text" id="busca" placeholder="🔍 Buscar experimento...">
 </div>
@@ -81,7 +95,7 @@
 
         </div>
     </section>
-</section>
+
 </main>
 </body>
 <script>document.getElementById('busca').addEventListener('input', function () {

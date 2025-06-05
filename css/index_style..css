@@ -1,3 +1,5 @@
+/* CSS REESTRUTURADO COM CORREÇÕES */
+
 * {
     font-family: Poppins, sans-serif;
     margin: 0;
@@ -5,25 +7,25 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-body{
-    background-color:#121212;
+
+body {
+    background-color: #121212;
     color: #e0e0e0;
 }
 
-section{
+section {
     padding: 28px 8%;
 }
 
 section#intro-experimentos {
-    padding-top: 120px; /* ou o suficiente pra descolar do header fixo */
+    padding-top: 120px;
 }
 
-
-header{
+/* ===== HEADER E NAVBAR ===== */
+header {
     width: 100%;
     padding: 20px 8%;
     position: fixed;
@@ -33,22 +35,19 @@ header{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
 #navbar {
-    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* ✅ Isso alinha logo à esquerda e menu à direita */
-    padding: 0 8%;
+    justify-content: flex-start;
+    width: 100%;
 }
 
-
-#nav_logo{
-    font-size: clamp(20px, 5vw, px);
-    font-weight: 600;
+#nav_logo {
     margin-right: auto;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 600;
     white-space: nowrap;
-    transition: font-size 0.3s ease, margin 0.3s ease;
 }
 
 #nav_list {
@@ -60,26 +59,98 @@ header{
     gap: 48px;
 }
 
-.nav_item a{
+.nav_item a {
     text-decoration: none;
     font-weight: 600;
     color: #7FDBFF;
 }
 
-.nav_item.active a{
+.nav_item.active a {
     color: thistle;
     border-bottom: 3px solid black;
 }
 
-.nav_item a:hover{
+.nav_item a:hover {
     color: crimson;
     transition: 0.3s all;
 }
 
-.nav_item.active a:hover{
+.nav_item.active a:hover {
     color: blueviolet;
 }
 
+/* ===== MENU HAMBURGUER ===== */
+#menu-toggle {
+    display: none;
+}
+
+#menu-toggle:checked ~ #sidebar {
+    left: 0;
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.menu-icon i {
+    transition: opacity 0.3s ease;
+    position: absolute;
+}
+
+.icon-close {
+    opacity: 0;
+}
+
+#menu-toggle:checked + .menu-icon .icon-bars {
+    opacity: 0;
+}
+
+#menu-toggle:checked + .menu-icon .icon-close {
+    opacity: 1;
+}
+
+#sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background-color: #121212;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 60px 20px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: #7FDBFF;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ===== HOME E CTA ===== */
 #home {
     display: flex;
     align-items: center;
@@ -95,12 +166,12 @@ header{
     gap: 28px;
 }
 
-#cta .title{
+#cta .title {
     font-size: 2.5rem;
     color: #e0e0e0;
 }
 
-#cta .title span{
+#cta .title span {
     color: #7FDBFF;
 }
 
@@ -115,26 +186,26 @@ header{
     flex-wrap: wrap;
 }
 
-#cta_btns a{
+#cta_btns a {
     text-decoration: none;
     color: #1d1d1d;
     border-radius: 20px;
 }
 
-#banner{
+#banner {
     width: 42%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-#banner img{
+#banner img {
     max-width: 100%;
     height: auto;
     transition: transform 0.3s ease;
 }
 
-#banner img:hover{
+#banner img:hover {
     transform: scale(1.2);
 }
 
@@ -143,55 +214,46 @@ header{
     gap: 18px;
 }
 
-.social-media-buttons a{
+.social-media-buttons a {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 45px;
     height: 48px;
     font-size: 1.25rem;
-    border-radius: 19px ;
-    text-align: none;
+    border-radius: 19px;
     color: #1d1d1d;
     background-color: darkgray;
     transition: background 0.3s ease;
 }
 
-.social-media-buttons a:hover{
+.social-media-buttons a:hover {
     background-color: pink;
 }
 
 .btn-default {
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
     padding: 10px 20px;
     color: darkgrey;
-    background-color:  #7FDBFF;
-    transition: background 0.3s ease, transform 0.3s ease;
+    background-color: #7FDBFF;
     border-radius: 15px;
-      
-    
-
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
 }
 
-.btn-default:hover{
+.btn-default:hover {
     background-color: #2ECC40;
     transform: scale(1.1);
 }
 
-
-
-
-
+/* ===== EXPERIMENTOS ===== */
 .experimentos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 24px;
-    margin: 24px;
-    margin-top: 5%;
+    margin: 5% 24px 24px;
 }
-
 
 .experimento-card {
     background-color: #1e1e1e;
@@ -199,51 +261,45 @@ header{
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(127, 219, 255, 0.2);
     transition: transform 0.3s ease;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-}
-
-.experimento-card p {
-    margin-bottom: 16px; /* Espaço entre o parágrafo e o botão */
 }
 
 .experimento-card h3 {
-    margin-bottom: 8px; /* Pequeno espaço entre o título e o parágrafo */
+    margin-bottom: 8px;
     color: #e0e0e0;
 }
 
-.experimento-card .btn-default {
-    align-self: flex-start; /* Faz o botão se ajustar ao conteúdo, e não esticar */
-    width: auto;
-    color: #1d1d1d  ;             /* Impede que ele cresça além do necessário */
+.experimento-card p {
+    margin-bottom: 16px;
 }
 
-.experimento-card:hover{
+.experimento-card .btn-default {
+    align-self: flex-start;
+    width: auto;
+    color: #1d1d1d;
+}
+
+.experimento-card:hover {
     transform: scale(1.1);
 }
 
-
-/* agora vem a parte da após o grid dos experimentos */
-
-
-
+/* ===== EQUIPE ===== */
 #equipe {
     text-align: center;
     background-color: #f5f5f5;
     padding: 60px 20px;
 }
 
-#equipe h2{
+#equipe h2 {
     color: #1d1d1d;
 }
 
-.subdescricao{
+.subdescricao {
     font-size: 1.1em;
     color: #555;
-    margin-bottom: 30px ;
+    margin-bottom: 30px;
 }
 
 .equipe-grid {
@@ -254,113 +310,217 @@ header{
     margin-top: 30px;
 }
 
-.membro{
+.membro {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 220px;
     text-align: center;
-    transition: transform 0.3s ;
+    transition: transform 0.3s;
 }
 
-.membro p, h3{
+.membro:hover {
+    transform: translateY(-5px);
+}
+
+.membro h3, .membro p {
     color: #121212;
 }
 
-.membro:hover{
-    transform: translateY((-5px));
-}
-
-.membro img{
+.membro img {
     width: 100%;
     height: 100%;
-    border-radius:50%;
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
     transition: transform 0.3s ease;
-
 }
-.membrio img:hover{
+
+.membro img:hover {
     transform: scale(1.1);
 }
 
-
-
+/* ===== SEÇÃO IA ===== */
 #ia {
     background-color: #fff6e9;
     padding: 60px 20px;
     text-align: center;
 }
 
-#ia h2{
+#ia h2 {
     font-size: 2em;
     color: #333;
     margin-bottom: 30px;
 }
 
-.ia-box{
+.ia-box {
     background: #fff;
     border-left: 6px solid #ff914d;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
     max-width: 700px;
     text-align: left;
     border-radius: 8px;
 }
-.ia-box p{
+
+.ia-box p {
     color: #121212;
 }
 
-.ia-resposta{
+.ia-resposta {
     border-left-color: #5cb85c;
     background: #f0fff0;
 }
 
-.ia-descricao-final{
+.ia-descricao-final {
     font-size: 1.1em;
     color: #444;
     margin-top: 30px;
 }
 
-#sobre-projeto p span{
+#sobre-projeto p span {
     color: #7FDBFF;
 }
 
+/* ===== FOOTER ===== */
 .site-footer {
     background-color: #121212;
     color: white;
     padding: 40px 20px;
     text-align: center;
-  }
-  
-  .footer-columns {
+}
+
+.footer-columns {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 20px;
-  }
-  
-  .footer-column h4 {
+}
+
+.footer-column h4 {
     font-size: 20px;
     margin-bottom: 10px;
-  }
-  
-  .footer-column a {
+}
+
+.footer-column a {
     font-size: 20px;
-    color:#7FDBFF;
+    color: #7FDBFF;
     margin: 0 8px;
     transition: color 0.3s ease;
-  }
-  
-  .footer-column a:hover {
+}
+
+.footer-column a:hover {
     color: #FDF1F4;
-  }
-  
-  .footer-copy {
+}
+
+.footer-copy {
     font-size: 14px;
     opacity: 0.8;
     margin-top: 10px;
-  }
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1200px) {
+    .menu-icon {
+        display: flex;
+    }
+    #sidebar {
+        display: block;
+    }
+    #nav_list {
+        display: none;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    #nav_list {
+        display: none;
+    }
+    #navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 16px;
+        height: auto;
+    }
+    #nav_logo {
+        display: block;
+        text-align: center;
+        font-size: 1.1rem;
+        margin: 0 auto;
+    }
+    header {
+        display: block;
+        padding: 16px;
+        position: static;
+        box-shadow: none;
+    }
+    #banner{
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1670px) {
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+        gap: 10px;
+    }
+    #nav_logo {
+        position: relative;
+        margin: 0;
+        font-size: clamp(20px, 4vw, 28px);
+        white-space: nowrap;
+    }
+    #nav_list {
+        position: relative;
+        left: auto;
+        transform: none;
+        display: flex;
+        gap: 20px;
+        font-size: 0.95rem;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    #content{
+        margin-top: 10%;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    #nav_list {
+        display: none;
+    }
+    #navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 16px;
+    }
+    #nav_logo {
+        display: block;
+        text-align: left;
+        font-size: 1.2rem;
+        margin: 0 auto;
+    }
+    header {
+        display: block;
+        padding: 15px 15%;
+        position: static;
+        box-shadow: none;
+    }
+    #home {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+
+    #banner{
+        display: none;
+    }
+}
