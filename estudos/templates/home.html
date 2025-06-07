@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bem-vindo à Home!</h1>
+
+    <!-- Só mostra essa parte se 'mensagem' existir -->
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% else %}
+        <p>Essa é a página inicial sem mensagem.</p>
+    {% endif %}
+
+</body>
+</html>
