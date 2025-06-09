@@ -12,6 +12,7 @@ def gerar_hash(senha):
         return hashlib.sha256(senha.encode()).hexdigest()
 @views.route('/login', methods =['GET', 'POST'])
 def login():
+    erro = None
     if request.method =='POST':
         email = request.form['email']
         senha = request.form['senha']
@@ -25,11 +26,13 @@ def login():
                 session['usuario'] = usuario[1] #nome guardado na session
                 return redirect(url_for('views.dashboard')) #login sbem sucedido, manda pra dashboard do site
             else:
-                return 'Login Inválido'
-    return render_template('login.html')
-
+                erro ='Login Inválido'
+    return render_template('login.html', erro=erro)
+            
 @views.route('/cadastro', methods =['GET','POST'])
 def cadastro():
+    erro = None
+
     if request.method =='POST':
         nome = request.form['nome']
         email = request.form['email']
@@ -43,8 +46,8 @@ def cadastro():
                 conn.commit()
                 return redirect(url_for('views.login'))
             except sqlite3.IntegrityError:
-                return 'Email já cadastrado!'
-    return render_template('cadastro.html')
+                erro = 'Email já cadastrado'
+    return render_template('cadastro.html', erro = erro)
 
 @views.route('/dashboard')
 def dashboard():

@@ -8,21 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
 </head>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
+    {% if erro %}
+  <p style="color: red; text-align:center;">{{ erro }}</p>
+{% endif %}
+
 
     <form method="POST">
         <h3>Login</h3>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" placeholder="seuemail@.com" id="email" required>
+        <input type="email" name="email" placeholder="seuemail@.com" id="email" required autofocus>
 
         <label for="senha">Senha:</label>
-        <input type="password" name="senha" placeholder="suasenha" id="senha" required>
+        <input type="password" name="senha" placeholder="suasenha" id="senha" required autocomplete="current-password">
 
         <button type="submit">Log In</button>
 
