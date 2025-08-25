@@ -1,0 +1,29 @@
+# Arquivos de ambiente
+.env
+*.env
+
+# Banco de dados SQLite
+app/usuarios.db
+*.db
+*.sqlite3
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtualenv
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db

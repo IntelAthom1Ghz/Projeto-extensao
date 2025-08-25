@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel ='stylesheet' href ="{{url_for('static', filename ='css/index_style.css')}}"
     <title>Protótipo Extensão</title>
 </head>
 <body>
@@ -43,7 +44,7 @@
         <i class="#" id="nav_logo">Projeto de Extensão - Física Interativa</i>
         <ul id ='nav_list'>
             <li class='nav_item'> <a href="#content"> Início</a></li>
-            <li class='nav_item'> <a href="experimentos.html"> Experimentos</a></li>
+            <li class='nav_item'> <a href="{{url_for('views.experimentos')}}"> Experimentos</a></li>
             <li class='nav_item'> <a href="#sobre-projeto"> Sobre</a></li>
             <li class='nav_item'> <a href="#footer"> Contato</a></li>
         </ul>
@@ -66,7 +67,7 @@
         </div>
 </div>
         <div id="banner">
-            <img src ='/imgs/banner.png' alt="projeto-arte">
+            <img src ="{{url_for('static', filename ='imgs/banner.png')}}"alt="projeto-arte">
         </div>
     </section>
 
@@ -78,23 +79,23 @@
             <div class="experimento-card">
                 <h3>Pêndulo Simples</h3>
                 <p>Entenda o movimento harmônico com um pêndulo interativo.</p>
-                <a href="experimentos.html" class="btn-default"> Descobrir mais</a>
+                <a href="{{url_for('views.experimentos')}}" class="btn-default"> Descobrir mais</a>
             </div>
             
             <div class="experimento-card">
                 <h3>Queda Livre</h3>
                 <p>Veja como a gravidade afeta objetos em queda.</p>
-                <a href="experimentos.html" class="btn-default"> Descobrir mais</a>
+                <a href="{{url_for('views.experimentos')}}" class="btn-default"> Descobrir mais</a>
             </div>
             <div class="experimento-card">
                 <h3>Plano inclinado</h3>
                 <p>Controle o ângulo do plano e veja como a aceleração muda.</p>
-                <a href="experimentos.html" class="btn-default"> Descobrir mais</a>
+                <a href="{{url_for('views.experimentos')}}" class="btn-default"> Descobrir mais</a>
             </div>
             <div class="experimento-card">
                 <h3>Lançamento Oblíquo</h3>
                 <p>Visualize a trajetória de um projétil, com controle de velocidade e ângulo</p>
-                <a href="experimentos.html" class="btn-default"> Descobrir mais</a>
+                <a href="{{url_for('views.experimentos')}}" class="btn-default"> Descobrir mais</a>
             </div>
 
         </div>

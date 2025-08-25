@@ -1,61 +1,77 @@
-from flask import Blueprint, render_template, request, redirect,url_for, session
+from flask import Blueprint, render_template,redirect,url_for, session
 import sqlite3
-import hashlib
+from estudos import bcrypt
+from .forms import LoginForm, CadastroForm
+views = Blueprint('views',__name__)
 
-views = Blueprint('views', __name__)
 
-#redireciona a pessoa que acesssar a raiz do site, direto pro login
 @views.route('/')
 def index():
-    return redirect(url_for('views.login')) #redireciono o usuario para o views.login
+    return render_template('index.html')
+
 def gerar_hash(senha):
-        return hashlib.sha256(senha.encode()).hexdigest()
-@views.route('/login', methods =['GET', 'POST'])
+    hash_senha = bcrypt.generate_password_hash(senha).decode('utf-8')
+    return hash_senha
+
+def verificar_senha(senha_digitada, senha_hash):
+    return bcrypt.check_password_hash(senha_hash, senha_digitada)
+
+
+
+@views.route('/login',methods =['POST', 'GET'])
 def login():
+    form = LoginForm()
     erro = None
-    if request.method =='POST':
-        email = request.form['email']
-        senha = request.form['senha']
-        senha_hash = gerar_hash(senha)
-        with sqlite3.connect('app/usuarios.db') as conn:
-            cursor = conn.cursor()
-            cursor.execute('SELECT * FROM usuarios WHERE email = ? and SENHA = ?', (email, senha_hash))
-            usuario = cursor.fetchone()
-
-            if usuario:
-                session['usuario'] = usuario[1] #nome guardado na session
-                return redirect(url_for('views.dashboard')) #login sbem sucedido, manda pra dashboard do site
-            else:
-                erro ='Login Inválido'
-    return render_template('login.html', erro=erro)
-            
-@views.route('/cadastro', methods =['GET','POST'])
-def cadastro():
-    erro = None
-
-    if request.method =='POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        senha = request.form['senha']
-        senha_hash = gerar_hash(senha)
-
-        with sqlite3.connect('app/usuarios.db') as conn:
-            cursor = conn.cursor()
-            try:
-                cursor.execute('INSERT INTO usuarios (nome, email, senha) VALUES (?,?,?)', (nome, email, senha_hash))
-                conn.commit()
-                return redirect(url_for('views.login'))
-            except sqlite3.IntegrityError:
-                erro = 'Email já cadastrado'
-    return render_template('cadastro.html', erro = erro)
-
-@views.route('/dashboard')
-def dashboard():
-    if 'usuario' in session:
-        return render_template('dashboard.html', nome = session['usuario'])
-    return redirect(url_for('views.login'))
-@views.route('/logout')
-def logout():
-    session.pop('usuario', None)
-    return redirect(url_for('views.login'))
     
+
+    if form.validate_on_submit():
+        email = form.email.data
+        senha = form.senha.data
+
+        with sqlite3.connect('app/usuarios.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('SELECT senha, nome FROM usuarios WHERE email = ?', (email,))
+            row = cursor.fetchone()
+
+            if row and verificar_senha(senha, row[0]):
+                session['usuario'] = row[1]
+                session.permanent = True
+                return redirect(url_for('views.dashboard'))
+            else:
+                erro = 'Email ou senha incorreto'
+    return render_template('login.html', form = form, erro = erro)
+
+@views.route('/cadastro', methods =['POST','GET'])
+def cadastro():
+    form = CadastroForm()
+    erro = None
+
+    if form.validate_on_submit:
+        nome = form.nome.data
+        email = form.nome.email
+        senha = form.nome.senha
+        senha_hash = gerar_hash(senha)
+
+        with sqlite3.connect('app/usuarios.db') as conn:
+            cursor = conn.cursor()
+
+            cursor.execute('SELECT id FROM usuarios WHERE email = ?', (email,))
+
+            if cursor.fetchone():
+                erro ='Email já cadastrado em nosso site'
+                return render_template('cadastro.html', erro = erro, form = form)
+
+
+            cursor.execute('INSERT INTO usuarios (nome, email, senha) VALUES (?,?,?)', (nome, email, senha_hash))
+
+        return redirect(url_for('views.login'))
+    return render_template('cadastro.html', form = form, erro = erro)
+
+@views.route('/experimentos',methods =['POST','GET'])
+def experimentos():
+    return render_template('experimentos.html')
+
+
+@views.route('/experimento-queda-livre',methods =['POST','GET'])
+def experimento_queda_livre():
+    return render_template('experimento-queda-livre.html')
